@@ -42,7 +42,6 @@ def rtr_pages_to_scan (url):
 # Func para obtener los datos de artículo y precio
 
 def rtr_request_multi_data (website):
-    #inicializamos la lista
     coches_list = []
     
     res = requests.get(website)
@@ -55,13 +54,10 @@ def rtr_request_multi_data (website):
     for i in items_list:
         d = {}
         index = items_list.index(i)
-        #d["index"] = index
-
         
         producto = i.h2.get_text(strip=True)
         d["producto"] = producto
-      
-        
+              
         precio = items_prices[index].text.replace("€","").replace(",",".").strip()
         # Ajustamos los datos para que nos queden como queremos con sólo un "." para el precio en los número mayores de 1000
         if len(precio) > 6:
@@ -69,8 +65,7 @@ def rtr_request_multi_data (website):
             d["precio"] = precio
         else:
             d["precio"] = precio
-
-      
+     
         coches_list.append(d)
     return coches_list
 
