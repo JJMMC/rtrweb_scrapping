@@ -11,16 +11,13 @@ for i in sitemenu:
     contador = contador + 1
 seleccionado = int(input("Selecciona lo que quieres Scrapear: "))
 
-    # Llamamos a las funciones para obtener los datos
+    # Llamamos a las funciones para obtener los datos y presentarlos en terminal
 url_seleccionada = (seleccion_familia(seleccionado))
 lista_url_seleccionadas = rtr_pages_to_scan(url_seleccionada)
-
-    # Almacenamos datos 
 datos_scrapeados_tot = list()
 for url in lista_url_seleccionadas:
     datos_scrapeados_pag = rtr_request_multi_data(url)
     datos_scrapeados_tot = datos_scrapeados_tot + datos_scrapeados_pag
-    # y los presentamos en terminal
 for i in datos_scrapeados_tot:
     print (i)
 print ("Número de artículos: ", len(datos_scrapeados_tot))
